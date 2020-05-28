@@ -1,0 +1,25 @@
+<div class="container">
+  <div>
+    <h1 style="display: inline-block">Your Notes</h1>
+    <%= link_to "Create a note", new_user_note_path(@user), style: "float: right; margin-top: 12px;" %>
+  </div>
+  <% @notes.each do |note| %>
+    <div class="row justify-content-center index-style">
+      <div class="col-sm-7">
+          <h5><%= "#{note.title}" %></h5>
+          <p><%= truncate("#{note.body}") %></p>
+          <p>
+            <span>Tags: </span>
+            <% note.tags.each do |tag|%>
+              <div class="chip"><%= "#{tag}" %></div>
+            <% end %>
+          </p>
+      </div>
+      <div class="col-sm-3">
+        <div><%= link_to "Edit note", edit_user_note_path(current_user, note)%></div>
+        <div><%= link_to "Open note", user_note_path(current_user, note) %></div>
+        <div><%= link_to "Delete note", user_note_path(current_user, note), method: :delete %></div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,12 @@
+<div>
+  <h5><%= "#{@note.title}" %></h5>
+</div>
+<div>
+    <p><%= "#{@note.body}" %></p>
+</div>
+<div>
+<p>Tags:</p>
+  <% @note.tags.each do |tag|%>
+    <span><%= "#{tag} " %></span>
+  <% end %>
+</div>

@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="justify-content: flex-end">
+  <div id="navbarSupportedContent">
+    <ul class="nav navbar-nav pull-right">
+    <% if user_signed_in? %>
+      <li class="dropdown">
+        <%= link_to("#{current_user.name}", user_notes_path(current_user)) %>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu" style="left: auto; right: 0; min-width: 6rem">
+          <li><%= link_to 'Profile', edit_user_registration_path %></li>
+          <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </li>
+    <% else %>
+      <li style="padding-inline-end: 10px;"><%= link_to 'Log In', new_user_session_path %></li>
+      <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+    <% end %>
+    </ul>
+  </div>
+</nav>
